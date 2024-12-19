@@ -1,0 +1,26 @@
+services:
+  flask:
+    build:
+      context: ./flask
+    volumes:
+      - ./flask:/app
+    environment:
+      - FLASK_ENV=development
+      - FLASK_RUN_HOST=0.0.0.0
+    ports:
+      - "5000:5000"
+    restart: always
+
+  react:
+    build:
+      context: ./react
+    volumes:
+      - ./react:/app
+      - ./react/node_modules:/app/node_modules # Prevents node_modules from being overwritten on container restart
+    environment:
+      - CHOKIDAR_USEPOLLING=true # Helps with hot reloading in Docker environments
+    ports:
+      - "3000:80" # Maps container's port 80 to host's port 3000
+    depends_on:
+      - flask # Starts React after Flask is up, useful if React needs the API
+    restart: always

@@ -1,0 +1,27 @@
+-weather_docker:
+- - docker-compose.yml
+
+- - flask
+- - - __pycache__
+- - - config.py
+- - - Dockerfile
+- - - requirements.txt
+- - - weatherapp.py
+
+- - react
+- - - node_modules
+- - - public
+- - - src
+- - - .dockerignore
+- - - .gitignore
+- - - Dockerfile
+- - - eslint.config.js
+- - - indes.html
+- - - package-lock.json
+- - - package.json
+- - - postcss.config.js
+- - - README.md
+- - - tailwind.config.js
+- - - tsconfig.app.json
+- - - tsconfig.json
+- - - vite.config.ts
